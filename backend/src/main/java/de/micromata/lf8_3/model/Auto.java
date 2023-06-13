@@ -3,7 +3,7 @@ package de.micromata.lf8_3.model;
 import jakarta.persistence.*;
 
 @Entity
-public class auto {
+public class Auto {
 
     @Id
     @GeneratedValue
