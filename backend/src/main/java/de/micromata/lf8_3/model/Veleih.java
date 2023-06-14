@@ -1,21 +1,13 @@
 package de.micromata.lf8_3.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Auto {
+public class Veleih {
 
     @Id
     @GeneratedValue
-    private long id;
+    private long id_auto;
 
     private String kennzeichen;
 
@@ -39,7 +31,7 @@ public class Auto {
 
     private String zubehoer;
 
-    private String versicherungsNr;
+    private String versicherungs_nr;
 
     private String tuev;
 
