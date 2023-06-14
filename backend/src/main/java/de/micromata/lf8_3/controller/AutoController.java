@@ -2,13 +2,15 @@ package de.micromata.lf8_3.controller;
 
 
 import de.micromata.lf8_3.model.Auto;
-import java.util.ArrayList;
+import de.micromata.lf8_3.repository.AutoRepository;
 import java.util.List;
-
-import de.micromata.lf8_3.repository.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class AutoController {
   private final AutoRepository autoRepository;
 

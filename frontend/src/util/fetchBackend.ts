@@ -1,6 +1,6 @@
 
-export default async (url: string, method: string, body?: any) => {
-    return fetch('http://localhost:8080' + url
+export default async (url: string, method: string, body?: any, setter?: any) => {
+    return fetch('http://localhost:8080/api' + url
         , {
             method: method,
             // @ts-ignore

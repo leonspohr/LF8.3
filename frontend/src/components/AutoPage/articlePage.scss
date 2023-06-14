@@ -1,0 +1,11 @@
+
+.article {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.article > * {
+  margin-left: 20px;
+  margin-right: 20px;
+}

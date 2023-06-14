@@ -1,6 +1,6 @@
 import fetchBackend from '../util/fetchBackend'
 
-export const getAllCars = async (setAllAutos: any) => {
+export const getAllAutos = async (setAllAutos: any) => {
   try {
     const response = await fetchBackend('/getAllAutos', 'GET');
     setAllAutos(await response.json());
