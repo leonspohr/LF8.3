@@ -13,6 +13,7 @@ export const ListPage = () => {
   }, []);
 
   return (
+      <div id="car-list">
       <table>
         <thead>
         <tr>
@@ -27,11 +28,21 @@ export const ListPage = () => {
             <tr key={auto.id}>
               <td>{auto.id}</td>
               <td>{auto.typ}</td>
-              <td>{auto.tagPrice}</td>
-              <td>{auto.kmPrice}</td>
+              {auto.preisgruppe ?
+                  <>
+                    <td>{auto.preisgruppe.preis_tag}</td>
+                    <td>{auto.preisgruppe.preis_kilometer}</td>
+                  </>
+                  :
+                  <>
+                    <td></td>
+                    <td></td>
+                  </>
+              }
             </tr>
         ))}
         </tbody>
       </table>
+</div>
   );
 };

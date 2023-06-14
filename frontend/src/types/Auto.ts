@@ -1,3 +1,5 @@
+import Preisgruppe from "./Preisgruppe";
+
 export default interface Auto {
   id?: number;
   kennzeichen?: string;
@@ -15,4 +17,5 @@ export default interface Auto {
   tuev?: string;
   asu?: string;
   verliehen?: boolean;
+  preisgruppe?: Preisgruppe;
 }

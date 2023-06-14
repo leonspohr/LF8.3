@@ -7,7 +7,7 @@ public class Preisgruppe {
 
     @Id
     @GeneratedValue
-    private long preisgruppe_id;
+    private long id;
 
     private String preis_kilometer;
 
