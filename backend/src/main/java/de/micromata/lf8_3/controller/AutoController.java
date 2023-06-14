@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AutoController {
 
-/*  @GetMapping("/getAllAutos")
+  @GetMapping("/getAllAutos")
   public List<Auto> getAllAutos() {
     List<Auto> autoList = new ArrayList<>();
     autoList.add(new Auto(
@@ -51,6 +51,6 @@ public class AutoController {
         false
     ));
     return autoList;
-  }*/
+  }
 
 }

@@ -51,4 +51,6 @@ public class Auto {
     @JoinColumn(name = "preisgruppe_fk")
     private Preisgruppe preisgruppe_id;
 
+    public Auto(int i, String kennzeichen, String hersteller, String typ, int i1, int i2, int i3, String farbe, String kraftstoff, int i4, String extras, String zubehoer, String versicherungsNr, String tuev, String tuev1, boolean b) {
+    }
 }
