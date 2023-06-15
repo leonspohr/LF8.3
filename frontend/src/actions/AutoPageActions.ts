@@ -9,3 +9,13 @@ export const getAutoById = async (id: any, setAuto: any) => {
     throw error;
   }
 };
+
+export const setVerliehen = async (id: any, setAuto: any) => {
+  try {
+    const response = await fetchBackend('/setVerliehen?id=' + id, 'PUT');
+    setAuto(await response.json());
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

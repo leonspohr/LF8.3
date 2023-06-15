@@ -1,7 +1,7 @@
 import "./autoPage.scss";
 import Auto from "../../types/Auto";
 import { useEffect, useState } from "react";
-import { getAutoById } from "../../actions/AutoPageActions";
+import {getAutoById, setVerliehen} from "../../actions/AutoPageActions";
 
 export const AutoPage = (props:any) => {
 
@@ -31,7 +31,7 @@ export const AutoPage = (props:any) => {
                   <li>versicherungsNr {auto.versicherungsNr}</li>
                   <li>tuev           {auto.tuev}</li>
                   <li>asu            {auto.asu}</li>
-                  <li>verliehen      {auto.verliehen}</li>
+                  <li>verliehen      {auto.verliehen ? 'verliehen' : "nicht verliehen"}</li>
                   {auto.preisgruppe &&
                       <>
                         <li>{auto.preisgruppe.preis_tag}</li>
@@ -39,6 +39,10 @@ export const AutoPage = (props:any) => {
                       </>
                   }
                 </ul>
+
+                  <button onClick={() => setVerliehen(auto.id, setAuto)}>
+                    Auto verleihen
+                  </button>
               </div>
           }
         </main>
