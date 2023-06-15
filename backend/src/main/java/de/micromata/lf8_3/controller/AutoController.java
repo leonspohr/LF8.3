@@ -4,13 +4,10 @@ package de.micromata.lf8_3.controller;
 import de.micromata.lf8_3.model.Auto;
 import de.micromata.lf8_3.repository.AutoRepository;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import de.micromata.lf8_3.repository.*;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,6 +25,12 @@ public class AutoController {
     return (List<Auto>) autoRepository.findAll();
   }
 
+  @GetMapping("/getAutoById")
+  public Auto getAutoById(@RequestParam Long id) {
+    Optional<Auto> auto = autoRepository.findById(id);
+    return auto.orElse(null);
+  }
+
   @PostMapping("/saveAuto")
   public void saveAuto(@RequestBody Auto auto) {
     autoRepository.save(auto);
@@ -40,7 +43,8 @@ public class AutoController {
 
   @PutMapping("/changeAuto")
   public Auto getAllAutos(@RequestBody Auto updatedAuto) {
-    Auto auto = autoRepository.findById(updatedAuto.getId()).get();
+    Auto auto = autoRepository.findById(updatedAuto.getId())
+        .orElse(null);
 
     auto.setKennzeichen(updatedAuto.getKennzeichen());
     auto.setHersteller(updatedAuto.getHersteller());

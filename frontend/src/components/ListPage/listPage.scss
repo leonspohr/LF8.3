@@ -4,3 +4,34 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: lightgray;
+}
+
