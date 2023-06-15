@@ -23,6 +23,7 @@ export const ListPage = () => {
             <th>Typ</th>
             <th>€/Tag</th>
             <th>€/km</th>
+            <th className='verliehen'>Bereits verliehen</th>
           </tr>
           </thead>
           <tbody>
@@ -41,6 +42,7 @@ export const ListPage = () => {
                         <td></td>
                       </>
                   }
+                <td className='verliehen'>{auto.verliehen && 'X'}</td>
               </tr>
           ))}
           </tbody>

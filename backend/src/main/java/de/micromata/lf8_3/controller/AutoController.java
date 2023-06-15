@@ -41,30 +41,17 @@ public class AutoController {
     autoRepository.delete(auto);
   }
 
-  @PutMapping("/changeAuto")
-  public Auto getAllAutos(@RequestBody Auto updatedAuto) {
-    Auto auto = autoRepository.findById(updatedAuto.getId())
-        .orElse(null);
+  @PutMapping("/setVerliehen")
+  public Auto setVerliehen(@RequestParam Long id) {
+    Optional<Auto> autoOptional = autoRepository.findById(id);
+    if (autoOptional.orElse(null) != null) {
+      Auto auto = autoOptional.get();
+      auto.setVerliehen(!auto.getVerliehen());
+      autoRepository.save(auto);
+      return auto;
+    }
 
-    auto.setKennzeichen(updatedAuto.getKennzeichen());
-    auto.setHersteller(updatedAuto.getHersteller());
-    auto.setTyp(updatedAuto.getTyp());
-    auto.setBaujahr(updatedAuto.getBaujahr());
-    auto.setPs(updatedAuto.getPs());
-    auto.setCcm(updatedAuto.getCcm());
-    auto.setFarbe(updatedAuto.getFarbe());
-    auto.setKraftstoff(updatedAuto.getKraftstoff());
-    auto.setSitzplaetze(updatedAuto.getSitzplaetze());
-    auto.setExtras(updatedAuto.getExtras());
-    auto.setZubehoer(updatedAuto.getZubehoer());
-    auto.setVersicherungsNr(updatedAuto.getVersicherungsNr());
-    auto.setTuev(updatedAuto.getTuev());
-    auto.setAsu(updatedAuto.getAsu());
-    auto.setVerliehen(updatedAuto.getVerliehen());
-    auto.setPreisgruppe_id(updatedAuto.getPreisgruppe_id());
-
-    autoRepository.save(auto);
-    return auto;
+    return null;
   }
 }
 
