@@ -2,9 +2,11 @@ import "./listPage.scss";
 import React, { useEffect, useState } from "react";
 import { getAllAutos } from "../../actions/ListPageActions";
 import Auto from "../../types/Auto";
+import { useNavigate } from 'react-router-dom';
 
 
 export const ListPage = () => {
+  const navigate = useNavigate()
 
   const [allAutos, setAllAutos] = useState<Auto[]>();
 
@@ -25,7 +27,7 @@ export const ListPage = () => {
           </thead>
           <tbody>
           {allAutos && allAutos.map((auto: any) => (
-              <tr className='clickable-row' key={auto.id}>
+              <tr className='clickable-row' key={auto.id} onClick={()=> navigate(`auto/${auto.id}`)}>
                   <td>{auto.id}</td>
                   <td>{auto.typ}</td>
                   {auto.preisgruppe ?
