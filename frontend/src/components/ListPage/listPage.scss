@@ -22,9 +22,16 @@ th {
   background-color: #f2f2f2;
 }
 
-/* CSS to center the table */
 .container {
   display: flex;
   justify-content: center;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: lightgray;
 }
 
