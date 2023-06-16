@@ -10,14 +10,6 @@ export const ListPage = () => {
 
   const [allAutos, setAllAutos] = useState<Auto[]>([]);
 
-  useEffect(() => {
-    console.log("allAutos: ", allAutos);
-  }, [allAutos]);
-
-  useEffect(() => {
-    console.log(allAutos[1])
-  }, [allAutos]);
-
   const convertNumberToEuro = (preis:number) : string => {
     if(preis){
       const formattedNumber = preis.toLocaleString("eu-DE", {
