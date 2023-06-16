@@ -2,14 +2,29 @@ import "./autoPage.scss";
 import Auto from "../../types/Auto";
 import { useEffect, useState } from "react";
 import {getAutoById, setVerliehen} from "../../actions/AutoPageActions";
+import AbgabeDialog from "./abgabeDialog";
 
 export const AutoPage = (props:any) => {
 
-  const [auto, setAuto] = useState<Auto>();
+    const [auto, setAuto] = useState<Auto>();
 
-  useEffect(() => {
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    useEffect(() => {
     getAutoById(props.id, setAuto)
   }, []);
+
+    function handleAbgabe(kilometer: String, tage: String){
+        console.log(kilometer + " " + tage)
+    }
 
   return (
       <div className="page--auto">
@@ -31,7 +46,7 @@ export const AutoPage = (props:any) => {
                   <li>versicherungsNr {auto.versicherungsNr}</li>
                   <li>tuev           {auto.tuev}</li>
                   <li>asu            {auto.asu}</li>
-                  <li>verliehen      {auto.verliehen ? 'verliehen' : "nicht verliehen"}</li>
+                  <li>Verfügbarkeit:      {auto.verliehen ? ' Verliehen' : " Verfügbar"}</li>
                   {auto.preisgruppe &&
                       <>
                         <li>{auto.preisgruppe.preis_tag}</li>
@@ -39,10 +54,31 @@ export const AutoPage = (props:any) => {
                       </>
                   }
                 </ul>
-
-                  <button onClick={() => setVerliehen(auto.id, setAuto)}>
-                    Auto verleihen
-                  </button>
+                {showModal && (
+                  <AbgabeDialog
+                      onConfirm={(kilometer: string, tage: string):any => {
+                          handleAbgabe(kilometer, tage)
+                          setVerliehen(auto.id, setAuto)
+                          closeModal();
+                      }}
+                      onCancel={closeModal}
+                  />
+                )}
+                  <div>
+                      { auto.verliehen ? (
+                              <button onClick={() => {
+                                  openModal();
+                              }}>
+                                  Auto Zurückgeben
+                              </button>
+                          ) : (
+                              <button onClick={() =>
+                                  setVerliehen(auto.id, setAuto)
+                              }>
+                                  Auto Ausleihen
+                              </button>
+                          )}
+                  </div>
               </div>
           }
         </main>
