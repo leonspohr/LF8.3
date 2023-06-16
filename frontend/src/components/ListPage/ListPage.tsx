@@ -1,14 +1,16 @@
 import "./listPage.scss";
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import Auto from "../../types/Auto";
 import {useNavigate} from 'react-router-dom';
 import {Searchbar} from "../Searchbar/Searchbar";
+import './listPage.scss';
 
 
 export const ListPage = () => {
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  const [allAutos, setAllAutos] = useState<Auto[]>([]);
+	const [ modalIsOpen, setModalIsOpen ] = useState(false);
+	const [ allAutos, setAllAutos ] = useState<Auto[]>([]);
 
   const convertNumberToEuro = (preis: number): string => {
     if (preis) {
@@ -62,6 +64,8 @@ export const ListPage = () => {
             ))}
             </tbody>
           </table>
+          <button onClick={() => setModalIsOpen(true)}>re</button>
+          {modalIsOpen ? <KundenModal onClose={() => setModalIsOpen(false)}/> : <></>}
         </div>
       </div>
   );
