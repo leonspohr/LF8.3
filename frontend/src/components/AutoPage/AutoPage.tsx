@@ -38,7 +38,7 @@ export const AutoPage = (props: any) => {
         let modalContent = document.querySelector(".modal-content") as HTMLElement
         let berechnungDiv = document.querySelector(".berechnung") as HTMLElement
         modalContent.style.display = "none"
-        berechnungDiv.style.display = "block"
+        berechnungDiv.style.display = "flex"
     }
 
   return (

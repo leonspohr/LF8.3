@@ -32,7 +32,7 @@ function AbgabeDiaglog({onConfirm, onCancel, berechnung}: ModalProps){
     return (
         <div className="modal">
             <div className="berechnung">
-                <span> {berechnung} </span>
+                <span id="margin-span">Dem Kunden sind {berechnung}€ zu berechnen </span>
                 <button onClick={handleExit}>Schließen</button>
             </div>
             <div className="modal-content">
