@@ -5,4 +5,5 @@ import org.springframework.data.repository.*;
 
 public interface AutoRepository extends CrudRepository<Auto, Long> {
 
+  public Auto findAllAutosByName(String name );
 }

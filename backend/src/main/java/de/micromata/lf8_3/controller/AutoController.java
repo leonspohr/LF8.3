@@ -22,9 +22,9 @@ public class AutoController {
 
   @GetMapping("/getAllAutos")
   public List<Auto> getAllAutos() {
-    return (List<Auto>) autoRepository.findAll();
-  }
 
+    return (List<Auto>)autoRepository.findAll();
+  }
   @GetMapping("/getAutoById")
   public Auto getAutoById(@RequestParam Long id) {
     Optional<Auto> auto = autoRepository.findById(id);
