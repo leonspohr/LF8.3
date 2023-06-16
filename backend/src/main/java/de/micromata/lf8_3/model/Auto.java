@@ -51,4 +51,22 @@ public class Auto {
     @JoinColumn(name = "preisgruppe_fk")
     private Preisgruppe preisgruppe;
 
+    public Auto(Auto auto) {
+        this.kennzeichen = auto.kennzeichen;
+        this.hersteller = auto.hersteller;
+        this.typ = auto.typ;
+        this.baujahr = auto.baujahr;
+        this.ps = auto.ps;
+        this.ccm = auto.ccm;
+        this.farbe = auto.farbe;
+        this.kraftstoff = auto.kraftstoff;
+        this.sitzplaetze = auto.sitzplaetze;
+        this.extras = auto.extras;
+        this.zubehoer = auto.zubehoer;
+        this.versicherungsNr = auto.versicherungsNr;
+        this.tuev = auto.tuev;
+        this.asu = auto.asu;
+        this.verliehen = false;
+    }
+
 }

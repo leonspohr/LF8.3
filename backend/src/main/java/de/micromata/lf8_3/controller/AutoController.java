@@ -111,7 +111,8 @@ public class AutoController {
 
   @PostMapping("/saveAuto")
   public void saveAuto(@RequestBody Auto auto) {
-    autoRepository.save(auto);
+    Auto newAuto = new Auto(auto);
+    autoRepository.save(newAuto);
   }
 
   @DeleteMapping("/deleteAuto")
