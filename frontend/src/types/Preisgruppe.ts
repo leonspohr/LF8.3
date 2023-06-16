@@ -1,5 +1,5 @@
 export default interface Preisgruppe {
   id?: number;
-  preis_kilometer?: String;
-  preis_tag?: String;
+  preis_kilometer?: number;
+  preis_tag?: number;
 }

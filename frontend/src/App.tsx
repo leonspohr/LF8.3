@@ -8,7 +8,7 @@ import { getAllAutos } from "./actions/ListPageActions";
 
 function App() {
 
-  const [allAutos, setAllAutos] = useState<Auto[]>();
+  const [allAutos, setAllAutos] = useState<Auto[]>([]);
 
   useEffect(() => {
     getAllAutos(setAllAutos)
