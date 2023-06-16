@@ -1,4 +1,5 @@
 import fetchBackend from '../util/fetchBackend'
+import Auto from '../types/Auto';
 
 export const getAllAutos = async (setAllAutos: any) => {
   try {

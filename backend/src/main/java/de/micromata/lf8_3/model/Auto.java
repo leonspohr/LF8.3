@@ -47,8 +47,8 @@ public class Auto {
 
     private Boolean verliehen;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "preisgruppe_fk")
-    private Preisgruppe preisgruppe_id;
+    private Preisgruppe preisgruppe;
 
 }
