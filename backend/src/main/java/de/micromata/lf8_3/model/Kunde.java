@@ -7,10 +7,19 @@ public class Kunde {
 
     @Id
     @GeneratedValue
-    private long id_personal;
+    private long kundennummer;
 
-    private String ma_nachname;
+    private String nachname;
 
-    private String ma_vorname;
+    private String vorname;
 
+    private String strasse;
+
+    private String ort;
+
+    private int plz;
+
+    private String land;
+
+    private String geburtsdatum;
 }
