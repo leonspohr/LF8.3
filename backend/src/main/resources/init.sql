@@ -15,7 +15,7 @@ VALUES (1, 24.0, 0.48),
        (14, 65.0, 1.30);
 
 INSERT INTO Auto (id, kennzeichen, hersteller, typ, baujahr, ps, ccm, farbe, kraftstoff, sitzplaetze, extras, zubehoer,
-                  versicherungs_nr, tuev, asu, verliehen, preisgruppe)
+                  versicherungs_nr, tuev, asu, verliehen, preisgruppe_fk)
 VALUES (1, 'KS R666', 'Renault', 'Megane', 2002, 100, 1596, 'weiß', 'Diesel', 5, 'Radio', '-', '3497856', '2005-05-01',
         '2005-05-01', false, 2),
        (2, 'KS JV417', 'Lancia', 'Thema', 2004, 145, 1999, 'schwarz', 'Normal', 5, 'Radio', 'Hupe', '3584,247',
