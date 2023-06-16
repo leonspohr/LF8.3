@@ -10,6 +10,8 @@ export const AutoPage = (props: any) => {
 
     const [showModal, setShowModal] = useState(false);
 
+    const [berechnung, setBerechnung] = useState(0);
+
     const openModal = () => {
         document.body.classList.add('modal-open');
         setShowModal(true);
@@ -17,15 +19,26 @@ export const AutoPage = (props: any) => {
 
     const closeModal = () => {
         document.body.classList.remove('modal-open');
+        let berechnungDiv = document.querySelector(".berechnung") as HTMLElement
+        berechnungDiv.style.display = "none"
         setShowModal(false);
+        setBerechnung(0)
+
+
     };
 
     useEffect(() => {
         getAutoById(props.id, setAuto)
     }, []);
 
-    function handleAbgabe(kilometer: String, tage: String) {
-        console.log(kilometer + " " + tage)
+    function handleAbgabe(kilometer: String, tage: String, preis_kilometer: number | undefined , preis_tag: number | undefined) {
+        if ( preis_tag && preis_kilometer){
+            setBerechnung(preis_kilometer * Number(kilometer) + preis_tag * Number(tage))
+        }
+        let modalContent = document.querySelector(".modal-content") as HTMLElement
+        let berechnungDiv = document.querySelector(".berechnung") as HTMLElement
+        modalContent.style.display = "none"
+        berechnungDiv.style.display = "block"
     }
 
     return (
@@ -68,14 +81,16 @@ export const AutoPage = (props: any) => {
                                     <div className="modal-wrapper">
                                         <div className="modal-overlay">
                                             {showModal && (
+                                                <div>
                                                 <AbgabeDialog
                                                     onConfirm={(kilometer: string, tage: string): any => {
-                                                        handleAbgabe(kilometer, tage);
+                                                        handleAbgabe(kilometer, tage, auto.preisgruppe?.preis_kilometer, auto.preisgruppe?.preis_tag);
                                                         setVerliehen(auto.id, setAuto);
-                                                        closeModal();
                                                     }}
                                                     onCancel={closeModal}
+                                                    berechnung={berechnung}
                                                 />
+                                                </div>
                                             )}
                                         </div>
                                     </div>

@@ -4,9 +4,10 @@ import './abgabeDialog.scss';
 type ModalProps = {
     onConfirm: (kilometer: string, tage: string) => any;
     onCancel: () => void;
+    berechnung: number
 };
 
-function AbgabeDiaglog({onConfirm, onCancel}: ModalProps){
+function AbgabeDiaglog({onConfirm, onCancel, berechnung}: ModalProps){
 
     const [kilometer, setKilometer] = useState("");
 
@@ -24,9 +25,16 @@ function AbgabeDiaglog({onConfirm, onCancel}: ModalProps){
         setKilometer("");
         setTage("");
     };
+    const handleExit = () => {
+        onCancel();
+    }
 
     return (
         <div className="modal">
+            <div className="berechnung">
+                <span> {berechnung} </span>
+                <button onClick={handleExit}>Schließen</button>
+            </div>
             <div className="modal-content">
                 <h2>Autoverleih</h2>
                 <div className="input-wrapper">
