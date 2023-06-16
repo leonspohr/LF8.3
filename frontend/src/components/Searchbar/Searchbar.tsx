@@ -1,26 +1,9 @@
 import './searchbar.scss';
 import {useEffect, useState} from 'react';
 import { searchAction } from '../../actions/SearchActions';
+import autoAttributes from "../../util/autoAttributes";
 
 export const Searchbar = (props:any) => {
-
-  const parameters = [
-    'id',
-    'kennzeichen',
-    'hersteller',
-    'typ',
-    'baujahr',
-    'ps',
-    'ccm',
-    'farbe',
-    'kraftstoff',
-    'sitzplaetze',
-    'extras',
-    'zubehoer',
-    'versicherungsNr',
-    'tuev',
-    'asu',
-  ];
 
   const [searchValue, searchActionValue] = useState('');
   const [selectedParameter, setSelectedParameter] = useState('id');
@@ -59,7 +42,7 @@ export const Searchbar = (props:any) => {
                 onChange={handleParameterSelect}
                 className='dropdown-select'
             >
-              {parameters.map((parameter: string) => (
+              {autoAttributes.map((parameter: string) => (
                   <option key={parameter} value={parameter}>
                     {parameter}
                   </option>

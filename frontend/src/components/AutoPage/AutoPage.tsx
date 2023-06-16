@@ -2,7 +2,7 @@ import "./autoPage.scss";
 import Auto from "../../types/Auto";
 import {useEffect, useState} from "react";
 import {getAutoById, setVerliehen} from "../../actions/AutoPageActions";
-import AbgabeDialog from "./AbgabeDialog";
+import AbgabeDialog from "./AbgabeModal";
 
 export const AutoPage = (props: any) => {
 
@@ -23,8 +23,6 @@ export const AutoPage = (props: any) => {
         berechnungDiv.style.display = "none"
         setShowModal(false);
         setBerechnung(0)
-
-
     };
 
   useEffect(() => {

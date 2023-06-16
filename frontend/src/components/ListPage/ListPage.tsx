@@ -1,15 +1,16 @@
-import "./listPage.scss";
 import React, { useState} from "react";
 import Auto from "../../types/Auto";
 import {useNavigate} from 'react-router-dom';
 import {Searchbar} from "../Searchbar/Searchbar";
 import './listPage.scss';
+import '../AutoPage/abgabeModal.scss';
+import { AutoModal } from "../AutoModal/AutoModal";
 
 
 export const ListPage = () => {
 	const navigate = useNavigate();
 
-	const [ modalIsOpen, setModalIsOpen ] = useState(false);
+	const [ showModal, setShowModal ] = useState(false);
 	const [ allAutos, setAllAutos ] = useState<Auto[]>([]);
 
   const convertNumberToEuro = (preis: number): string => {
@@ -22,7 +23,16 @@ export const ListPage = () => {
     }
     return "0,00€"
   }
-  console.log(allAutos)
+
+  const openModal = () => {
+    document.body.classList.add('modal-open');
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    document.body.classList.remove('modal-open');
+    setShowModal(false);
+  };
 
   return (
       <div id={"main"}>
@@ -30,6 +40,7 @@ export const ListPage = () => {
 
         <div id="car-list">
           <Searchbar setAllAutos={setAllAutos}/>
+
           <table>
             <thead>
             <tr>
@@ -63,9 +74,10 @@ export const ListPage = () => {
                 </tr>
             ))}
             </tbody>
+            <button className='new-auto-modal' onClick={openModal}>Neues Auto</button>
           </table>
-          <button onClick={() => setModalIsOpen(true)}>re</button>
-          {modalIsOpen ? <KundenModal onClose={() => setModalIsOpen(false)}/> : <></>}
+
+          {showModal && <AutoModal onClose={closeModal}/>}
         </div>
       </div>
   );
