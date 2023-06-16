@@ -1,8 +1,8 @@
 import "./listPage.scss";
-import React, { useEffect, useState } from "react";
-import { getAllAutos } from "../../actions/ListPageActions";
+import React, {useEffect, useState} from "react";
 import Auto from "../../types/Auto";
 import { useNavigate } from 'react-router-dom';
+import { Searchbar } from "../Searchbar/Searchbar";
 
 
 export const ListPage = () => {
@@ -11,8 +11,8 @@ export const ListPage = () => {
   const [allAutos, setAllAutos] = useState<Auto[]>([]);
 
   useEffect(() => {
-    getAllAutos(setAllAutos)
-  }, []);
+    console.log("allAutos: ", allAutos);
+  }, [allAutos]);
 
   useEffect(() => {
     console.log(allAutos[1])
@@ -30,40 +30,41 @@ export const ListPage = () => {
   }
 
   return (
-      <div id="car-list">
-        <table>
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>Typ</th>
-            <th>€/Tag</th>
-            <th>€/km</th>
-            <th className='verliehen'>Bereits verliehen</th>
-          </tr>
-          </thead>
-          <tbody>
-          {allAutos && allAutos.map((auto: any) => {
-              console.log(auto.preisgruppe?.preis_tag)
-              return(
-            <tr className='clickable-row' key={auto.id} onClick={() => navigate(`auto/${auto.id}`)}>
-              <td>{auto.id}</td>
-              <td>{auto.typ}</td>
-              {auto.preisgruppe ?
-                  <>
-                    <td>{convertNumberToEuro(auto.preisgruppe.preis_tag)}</td>
-                    <td>{convertNumberToEuro(auto.preisgruppe.preis_kilometer)}</td>
-                  </>
-                  :
-                  <>
-                    <td></td>
-                    <td></td>
-                  </>
-              }
-              <td className='verliehen'>{auto.verliehen && 'X'}</td>
+      <div>
+        <Searchbar setAllAutos={setAllAutos}/>
+        <div id="car-list">
+          <table>
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>Typ</th>
+              <th>€/Tag</th>
+              <th>€/km</th>
+              <th className='verliehen'>Bereits verliehen</th>
             </tr>
-          )})}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+            {allAutos && allAutos?.length > 0 && allAutos?.map((auto: any) => (
+                <tr className='clickable-row' key={auto.id} onClick={()=> navigate(`auto/${auto.id}`)}>
+                  <td>{auto.id}</td>
+                  <td>{auto.typ}</td>
+                  {auto.preisgruppe ?
+                      <>
+                        <td>{convertNumberToEuro(auto.preisgruppe.preis_tag)}</td>
+                        <td>{convertNumberToEuro(auto.preisgruppe.preis_kilometer)}</td>
+                      </>
+                      :
+                      <>
+                        <td></td>
+                        <td></td>
+                      </>
+                  }
+                  <td className='verliehen'>{auto.verliehen && 'X'}</td>
+                </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
       </div>
   );
 };
